@@ -13,4 +13,4 @@ e.g.
 
 ### Usage
 
-When run the script will look for a file named *grades.txt* if it does not exist it will create it, if it does exist the program will prompt you to continue at the last grade added. Input grades and strike enter, if no grade is entered the grade will be recorded as 10.
+When run, the script will look for a file named *grades.txt* if it does not exist it will create it, if it does exist the program will prompt you to continue at the last grade added. Input grades and strike enter, if no grade is entered the grade will be recorded as 10.
