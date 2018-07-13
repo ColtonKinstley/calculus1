@@ -1,22 +1,26 @@
 #! /usr/local/bin/python3
 
-import re
+import re, sys
 
 
 class Grades:
     ''' A program to input grades into pooler.'''
 
     def __init__(self):
-        f = open('students.txt', 'r')
-        self.grades = {}
-        for i in f.readlines():
-            id_num = re.match('^\d+', i)
-            id_num = id_num.group()
-            name = re.search(r' (\w+) \w+=$', i)
-            name = name.group(1).split('_')
-            name = (name[0], name[1])
-            self.grades[id_num] = [name, i.rstrip()]
-        f.close()
+        try:
+            with open('students.txt', 'r') as f:
+                self.grades = {}
+                for i in f.readlines():
+                    id_num = re.match('^\d+', i)
+                    id_num = id_num.group()
+                    name = re.search(r' (\w+) \w+=$', i)
+                    name = name.group(1).split('_')
+                    name = (name[0], name[1])
+                    self.grades[id_num] = [name, i.rstrip()]
+                f.close()
+        except FileNotFoundError:
+            print('No students file found. It  must be in the curren directory and named students.txt.')
+            sys.exit()
         self.graded = []
         try:
             self.output = open('grades.txt', 'x')
